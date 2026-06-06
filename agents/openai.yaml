@@ -1,0 +1,4 @@
+interface:
+  display_name: "File Distillation"
+  short_description: "Distill Obsidian notes into the right CareerOS folder."
+  default_prompt: "Use $file-distillation to distill this markdown document into my CareerOS knowledge base."
