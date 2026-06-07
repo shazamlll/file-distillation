@@ -7,7 +7,17 @@ description: Use when the user asks to 提炼, 蒸馏, distill, condense, refine
 
 ## Overview
 
-Turn a source document into a concise Markdown knowledge note, place it in the best matching folder under `E:\Obsidian-works-here\Personal-Assets\CareerOS`, and stop for user confirmation whenever the source appears unclear or possibly wrong.
+Turn a source document into a concise Markdown career-asset note, place it in the best matching folder under `E:\Obsidian-works-here\Personal-Assets\CareerOS`, and preserve the CareerOS inflow model:
+
+```text
+weekly signal or source document
+-> distilled note
+-> evidence-ready asset
+-> STAR interview case
+-> public-safe portfolio narrative
+```
+
+Stop for user confirmation whenever the source appears unclear, possibly wrong, unsafe to publish, or ambiguous in target asset type.
 
 ## Workflow
 
@@ -26,22 +36,42 @@ Turn a source document into a concise Markdown knowledge note, place it in the b
    - For current or high-stakes factual claims, verify with reliable sources when appropriate and cite the source in the confirmation question.
    - Do not silently "fix" uncertain claims. Ask concise, concrete questions and wait for the user.
 
-4. Inspect the CareerOS structure.
+4. Inspect the CareerOS structure and operating pages.
    - Read directory names and nearby Markdown note titles under `E:\Obsidian-works-here\Personal-Assets\CareerOS`.
+   - Read `CareerOS\README.md`, `CareerOS\00_Dashboard\Home.md`, and `CareerOS\00_Dashboard\Asset_Pipeline.md` if present.
    - Use the existing folder taxonomy and naming style. Prefer the closest existing directory over creating a new one.
    - Create a new subdirectory only when no existing directory reasonably fits; explain why before doing so unless the user already instructed it.
+   - Treat `CareerOS\10_Public_Portfolio` as the external expression layer. Write there only when the output is fully public-safe.
 
-5. Distill the note.
+5. Classify the output before writing.
+   - Choose exactly one primary `asset_type`: `project`, `architecture`, `methodology`, `brag`, `interview`, `strategy`, or `public_portfolio`.
+   - Choose one `maturity`: `raw`, `distilled`, `evidence-ready`, `star-ready`, or `public-ready`.
+   - Choose one `confidentiality`: `private`, `sanitized`, or `public`.
+   - Do not assume `distilled` means `public`. A distilled note can still be private or sanitized.
+   - If the source contains internal terms, private metrics, internal links, screenshots, raw data, company code, customer/person identifiers, or proprietary implementation details, the output must not be `confidentiality: public` unless those details are removed or generalized.
+
+6. Distill the note.
    - Keep the durable knowledge, decisions, frameworks, definitions, reusable procedures, and source-specific insights.
    - Remove filler, repeated phrasing, chatty transitions, raw brainstorming noise, and one-off execution details.
    - Preserve useful links, citations, commands, examples, and code snippets when they support future reuse.
    - Use clear Markdown headings and concise bullets. Prefer Chinese output if the source or user request is Chinese; otherwise match the source language.
    - Add a short "来源" or "Source" line pointing to the original document path.
+   - If evidence is missing, write `result needs evidence` rather than inventing metrics.
+   - For project assets, include role, constraints, contribution, decisions, results, public-safe expression, and next asset step.
+   - For interview assets, include Situation, Task, Action, Result, follow-up details, and sanitization checks.
+   - For public portfolio assets, keep only public-safe content and use generalized business or technical context.
 
-6. Write the distilled Markdown file.
+7. Write the distilled Markdown file.
    - Save it inside the selected CareerOS directory.
    - Choose a filename that matches local naming conventions and avoids collisions. If a file exists, create a timestamped or disambiguated filename rather than overwriting.
-   - After writing, report the output path, selected directory rationale, and any unresolved assumptions.
+   - Add frontmatter using the CareerOS metadata model.
+   - After writing, report the output path, selected directory rationale, classification, suggested index update, suggested `Asset_Pipeline.md` update, and any unresolved assumptions.
+
+8. Keep the operating surfaces current when it is safe and obvious.
+   - Add or suggest a row in the relevant folder index.
+   - Add or suggest a row in `CareerOS\00_Dashboard\Asset_Pipeline.md` for the asset's current maturity and next step.
+   - If the asset supports target-role positioning, add or suggest a row in `CareerOS\07_Career_Strategy\Capability_Evidence_Matrix.md`.
+   - If the right row content is ambiguous, stop and ask instead of guessing.
 
 ## Confirmation Gate
 
@@ -52,6 +82,8 @@ Ask the user before continuing when any of these appear:
 - The best target CareerOS directory is ambiguous.
 - A new directory seems necessary.
 - Distillation would require deleting nuance that may be important.
+- The output could be public-facing but public safety is uncertain.
+- The asset type, maturity level, confidentiality level, target roles, or capabilities are ambiguous.
 
 When asking, quote or summarize only the smallest relevant excerpt and give the concrete decision needed. Continue only after the user answers.
 
@@ -64,6 +96,18 @@ A typical distilled note should use this structure when it fits the content:
 source: "<original path>"
 distilled: true
 created: YYYY-MM-DD
+updated: YYYY-MM-DD
+asset_type: project | architecture | methodology | brag | interview | strategy | public_portfolio
+maturity: raw | distilled | evidence-ready | star-ready | public-ready
+confidentiality: private | sanitized | public
+target_roles:
+  - "<role name>"
+capabilities:
+  - "<capability name>"
+tags:
+  - asset/<type>
+  - maturity/<level>
+  - confidentiality/<level>
 ---
 
 # <Concise Knowledge Title>
@@ -91,3 +135,6 @@ Adapt headings to the document. Do not force empty sections.
 - Guessing the target folder from the source path alone. Always inspect CareerOS structure first.
 - Correcting suspicious claims silently. Stop and ask.
 - Overwriting existing notes. Avoid collisions unless the user explicitly requests replacement.
+- Marking a note public just because it is distilled.
+- Writing to `10_Public_Portfolio` without enforcing the public-safety rules.
+- Omitting CareerOS frontmatter, which makes future pipeline tracking harder.
