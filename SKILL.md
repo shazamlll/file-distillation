@@ -73,6 +73,17 @@ Stop for user confirmation whenever the source appears unclear, possibly wrong, 
    - If the asset supports target-role positioning, add or suggest a row in `CareerOS\07_Career_Strategy\Capability_Evidence_Matrix.md`.
    - If the right row content is ambiguous, stop and ask instead of guessing.
 
+9. Commit and push the `Personal-Assets` repository after local distillation work is complete.
+   - Work in `E:\Obsidian-works-here\Personal-Assets`.
+   - Run `git fetch origin` before committing or pushing, then check `git rev-list --left-right --count <branch>...origin/<branch>`.
+   - Stage only the files created or updated for this distillation. Do not stage unrelated vault, Obsidian, or user changes.
+   - Commit with a concise message that names the distilled asset or source.
+   - If local and remote have diverged, or if the local branch is behind after the commit, rebase onto `origin/<branch>` before pushing.
+   - If conflicts occur, resolve them by preserving both the new distillation content and any remote index or pipeline updates when the correct merge is clear.
+   - If conflict resolution requires domain judgment, would overwrite unrelated user changes, or affects files outside the distillation scope, stop and ask the user.
+   - Push to the tracked remote branch. If push is rejected because the remote moved, fetch, rebase, resolve conflicts if safe, and retry the push.
+   - Do not report the distillation as complete until the commit hash and successful push are known.
+
 ## Confirmation Gate
 
 Ask the user before continuing when any of these appear:
@@ -138,3 +149,5 @@ Adapt headings to the document. Do not force empty sections.
 - Marking a note public just because it is distilled.
 - Writing to `10_Public_Portfolio` without enforcing the public-safety rules.
 - Omitting CareerOS frontmatter, which makes future pipeline tracking harder.
+- Leaving `Personal-Assets` changes only in the local working tree. Distillation includes commit and push unless the user explicitly asks not to sync.
+- Staging unrelated `.obsidian` or vault changes while committing a distilled asset.
