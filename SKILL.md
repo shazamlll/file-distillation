@@ -73,16 +73,13 @@ Stop for user confirmation whenever the source appears unclear, possibly wrong, 
    - If the asset supports target-role positioning, add or suggest a row in `CareerOS\07_Career_Strategy\Capability_Evidence_Matrix.md`.
    - If the right row content is ambiguous, stop and ask instead of guessing.
 
-9. Commit and push the `Personal-Assets` repository after local distillation work is complete.
+9. Keep CareerOS local-only.
    - Work in `E:\Obsidian-works-here\Personal-Assets`.
-   - Run `git fetch origin` before committing or pushing, then check `git rev-list --left-right --count <branch>...origin/<branch>`.
-   - Stage only the files created or updated for this distillation. Do not stage unrelated vault, Obsidian, or user changes.
-   - Commit with a concise message that names the distilled asset or source.
-   - If local and remote have diverged, or if the local branch is behind after the commit, rebase onto `origin/<branch>` before pushing.
-   - If conflicts occur, resolve them by preserving both the new distillation content and any remote index or pipeline updates when the correct merge is clear.
-   - If conflict resolution requires domain judgment, would overwrite unrelated user changes, or affects files outside the distillation scope, stop and ask the user.
-   - Push to the tracked remote branch. If push is rejected because the remote moved, fetch, rebase, resolve conflicts if safe, and retry the push.
-   - Do not report the distillation as complete until the commit hash and successful push are known.
+   - Never run `git fetch`, `git pull`, `git rebase`, or `git push` for `Personal-Assets` or any `CareerOS` content.
+   - Never add or restore a Git remote for `Personal-Assets` as part of distillation work.
+   - Do not sync, publish, upload, mirror, or otherwise send `CareerOS` content to a remote repository.
+   - Leave distilled changes in the local working tree unless the user explicitly asks for a local-only commit.
+   - If the user asks to sync, push, publish, or reconnect remote tracking for `CareerOS` or `Personal-Assets`, stop and explain that CareerOS is intentionally local-only.
 
 ## Confirmation Gate
 
@@ -149,5 +146,7 @@ Adapt headings to the document. Do not force empty sections.
 - Marking a note public just because it is distilled.
 - Writing to `10_Public_Portfolio` without enforcing the public-safety rules.
 - Omitting CareerOS frontmatter, which makes future pipeline tracking harder.
-- Leaving `Personal-Assets` changes only in the local working tree. Distillation includes commit and push unless the user explicitly asks not to sync.
+- Running `git fetch`, `git pull`, `git rebase`, or `git push` for `Personal-Assets` or `CareerOS`.
+- Re-adding a Git remote to `Personal-Assets` during distillation work.
+- Treating local-only CareerOS notes as safe to sync because they are already distilled.
 - Staging unrelated `.obsidian` or vault changes while committing a distilled asset.
